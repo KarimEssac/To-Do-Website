@@ -1,0 +1,41 @@
+:root
+{
+    --bg-color: #FAF0D7;
+    --text-color: #8CC0DE;
+    --theme-color: #FFD9C0;
+    --div-color: #CCEEBC;
+    --dark-cyan: #016A70;
+    --mod-yellow: #D2DE32;
+    --dark-div: #A2C579;
+}
+body
+{
+    background-color:#fffbf1;
+}
+h4
+{
+    color:var(--dark-cyan);
+    font-weight: 700;
+}
+.Main-Container, .Task-Schedule
+{
+    border-radius: 5px;
+    background-color:var(--dark-div);
+}
+.Day-time-h
+{
+    margin-top: 30px;
+}
+.Selection
+{
+    color: #016A70;
+    font-size: 25px;
+}
+i
+{
+    cursor: pointer;
+}
+.Error
+{
+    font-weight: 600;
+}

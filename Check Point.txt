@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>To do app</title>
+</head>
+<body>
+    <h4 class="text-center fs-1 my-2">Add Your Tasks</h4>
+    <div class="Main-Container container p-4 text-center">
+        <div class="row">
+            <div class="col-xl-10 col-lg-9 col-md-9 col-sm-8">
+                <input class="form-control" id="Task" type="text" placeholder="Enter Your Task" aria-label="Input">
+                <div id="taskErrorText" class="Error text-danger mt-1 text-start mx-3 fs-4"></div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4">
+                <button class="btn btn-primary w-100" id="addBtn">Add task</button>
+            </div>
+        </div>
+        <div class="row Day-time-h">
+            <div class="col-6">
+                <h2 class="Selection">Select Day</h2>
+            </div>
+            <div class="col-6">
+                <h2 class="Selection">Select Time</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle w-100" type="button" id="DayDropdown" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                    <div id="taskErrorDay" class="Error text-danger mt-1 text-start mx-3 fs-4"></div>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" href="#">Sunday</a></li>
+                      <li><a class="dropdown-item" href="#">Monday</a></li>
+                      <li><a class="dropdown-item" href="#">Tuesday</a></li>
+                      <li><a class="dropdown-item" href="#">Wednesday</a></li>
+                      <li><a class="dropdown-item" href="#">Thursday</a></li>
+                      <li><a class="dropdown-item" href="#">Friday</a></li>
+                      <li><a class="dropdown-item" href="#">Saturday</a></li>
+                    </ul>
+                  </div>
+            </div>
+            <div class="col-6">
+            <input class="form-control w-100" type="time" id="timeSelector">
+            <div id="taskErrorTime" class="Error text-danger mt-1 text-start mx-3 fs-4"></div>
+            </div>
+        </div>
+    </div>
+    <h4 class="text-center fs-1 mt-5">Your Tasks Schedule</h4>
+    <div class="Task-Schedule mt-2 container p-4 text-center">
+        <ul class="nav nav-tabs" id="myTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active fs-5" id="Sunday-tab" data-bs-toggle="tab" href="#sunday-content" role = "tab"  aria-controls="sunday-content" aria-selected="true" onclick="switchTab('#Sunday-tab')">Sunday</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link text-secondary fs-5" id="Monday-tab" data-toggle="tab" href="#monday-content" role = "tab" aria-controls="monday-content" aria-selected="false" onclick="switchTab('#Monday-tab')">Monday</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link text-secondary fs-5" id="Tuesday-tab" data-toggle="tab" href="#tuesday-content" role = "tab" aria-controls="monday-content" aria-selected="false" onclick="switchTab('#Tuesday-tab')">Tuesday</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link text-secondary fs-5" id="Wednesday-tab" data-toggle="tab" href="#wednesday-content" role = "tab" aria-controls="monday-content" aria-selected="false" onclick="switchTab('#Wednesday-tab')">Wednesday</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link text-secondary fs-5" id="Thursday-tab" data-toggle="tab" href="#thursday-content" role = "tab" aria-controls="monday-content" aria-selected="false" onclick="switchTab('#Thursday-tab')">Thursday</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link text-secondary fs-5" id="Friday-tab" data-toggle="tab" href="#friday-content" role = "tab" aria-controls="monday-content" aria-selected="false" onclick="switchTab('#Friday-tab')">Friday</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link text-secondary fs-5" id="Saturday-tab" data-toggle="tab" href="#saturday-content" role = "tab" aria-controls="monday-content" aria-selected="false" onclick="switchTab('#Saturday-tab')">Saturday</a>
+            </li>
+        </ul>
+        
+        <div class="tab-content" id="myTabsContent">
+            <!--Sunday tab-->
+            <div class="tab-pane fade show active" id="sunday-content" role="tabpanel" aria-labelledby="Sunday-tab">
+                    <table class="table-warning table-hover table mt-4">
+                        <thead>
+                            <th scope="col">Task</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Done</th>
+                          </tr>
+                        </thead>
+                        <tbody id = "taskSchedule">
+
+                        </tbody>
+                      </table>
+            </div>
+            <!--Monday tab-->
+            <div class="tab-pane fade" id="monday-content" role="tabpanel" aria-labelledby="Monday-tab">
+                <h3 class="mt-2">Your Monday Schedule</h4>
+            </div>
+            <!--Tuesday tab-->
+            <div class="tab-pane fade" id="tuesday-content" role="tabpanel" aria-labelledby="Tuesday-tab">
+                <h3 class="mt-2">Your Tuesday Schedule</h4>
+            </div>
+            <!--Wednesday tab-->
+            <div class="tab-pane fade" id="wednesday-content" role="tabpanel" aria-labelledby="Wednesday-tab">
+                <h3 class="mt-2">Your Wednesday Schedule</h4>
+            </div>
+            <!--Thursday tab-->
+            <div class="tab-pane fade" id="thursday-content" role="tabpanel" aria-labelledby="Thursday-tab">
+                <h3 class="mt-2">Your Thursday Schedule</h4>
+            </div>
+            <!--Friday tab-->
+            <div class="tab-pane fade" id="friday-content" role="tabpanel" aria-labelledby="Friday-tab">
+                <h3 class="mt-2">Your Friday Schedule</h4>
+            </div>
+            <!--Saturday tab-->
+            <div class="tab-pane fade" id="saturday-content" role="tabpanel" aria-labelledby="Saturday-tab">
+                <h3 class="mt-2">Your Saturday Schedule</h4>
+            </div>
+        </div>
+    </div>
+<script src="Bootstrap/js/bootstrap.bundle.min.js"></script>    
+<script src="Code.js"></script>
+</body>
+</html>
+
+
+
+
+var nextTask;
+var elemCounter =0;
+var taskBtn = document.getElementById("addBtn");
+var dayBtn = document.getElementById("DayDropdown");
+taskBtn.onclick = function(){
+    var timeSelector = document.getElementById("timeSelector")
+    var taskInp = document.getElementById("Task");
+    var errorDivText = document.getElementById("taskErrorText");
+    var errorDivDay = document.getElementById("taskErrorDay");
+    var errorDivTime = document.getElementById("taskErrorTime");
+    nextTask = taskInp.value;
+    if (nextTask.trim() === '' || dayBtn.textContent === "" || timeSelector.value.trim() === '')
+    {
+        if (nextTask.trim() === '') {
+            errorDivText.textContent = "Please Enter Your Task";
+        } else {
+            errorDivText.textContent = '';
+        }
+        if (dayBtn.textContent === '') {
+            errorDivDay.textContent = "Please Enter Day Of The Task";
+        } else {
+            errorDivDay.textContent = '';
+        }
+        if (timeSelector.value.trim() === '') {
+            errorDivTime.textContent = "Please Enter Time Of The Task";
+        } else {
+            errorDivTime.textContent = '';
+        }
+    }
+    else{
+        errorDivText.textContent = '';
+        errorDivDay.textContent = '';
+        errorDivTime.textContent = '';
+        //!!!add row
+
+        var htmlcode = '<tr class = "table-danger"><th scope="row" class ="taskName"></th><td class ="timeToDo"></td><td class = "doneStatement"><i class="Wrong-icon fa-regular fa-circle-xmark"></i></td></tr>'
+        const tBody = document.getElementById("taskSchedule");
+        tBody.innerHTML+= htmlcode;
+        //add Task
+        var taskName = document.querySelectorAll(".taskName");
+        taskName[elemCounter].textContent = taskInp.value;
+        //add Time
+        var taskTime = document.querySelectorAll(".timeToDo");
+        taskTime[elemCounter].textContent = timeSelector.value;
+        elemCounter++;
+        console.log(dayBtn.textContent);
+    }
+    //Wrong Icon > Correct
+    const wrongIcon = document.querySelectorAll('.Wrong-icon')
+    wrongIcon.forEach(correction => {
+        correction.addEventListener('click',function(){
+            const divChange = correction.closest('.table-danger')
+            divChange.classList.add('table-success')
+            divChange.classList.remove('table-danger')
+            correction.className = "Correct-icon fa-regular fa-circle-check"
+        })
+    })
+}
+//Drop down menu Function
+const dropDownItems = document.querySelectorAll(".dropdown-item");
+dropDownItems.forEach(item => {
+    item.addEventListener("click",function(){
+        dayBtn.textContent = item.textContent;
+    })
+})
+var displayDay = 0;
+//Switch Tap function
+const dayAnchor = document.querySelectorAll('.nav-item a');
+  dayAnchor.forEach((i,index) => {
+    i.addEventListener('click', function (event) {
+      dayAnchor[displayDay].classList.remove('active','text-dark')
+      dayAnchor[displayDay].classList.add('text-secondary')
+      displayDay = index;
+      i.classList.add('active' , 'text-dark');
+    });
+  });
+  function switchTab(tabId) {
+    const tab = document.querySelector(tabId);
+    if (tab) {
+      const tabPane = new bootstrap.Tab(tab);
+      tabPane.show();
+    }
+  }
+  //Enter Key function
+const inputField = document.getElementById("Task");
+inputField.addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+        taskBtn.click(); 
+    }});
